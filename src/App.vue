@@ -1,28 +1,40 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <v-app>
+    <v-app-bar app color="white" elevation="0" dark prominent>
+      <img class="mt-3" alt="Vue logo" src="./assets/olga.png" width="150" />
+      <div id="name">
+        <div class="text-subtitle2">Olga Kiraga</div>
+        <div class="text-caption">Specjalista ds. Ubezpieczeń i Inwestycji</div>
+      </div>
+      <v-spacer></v-spacer>
+      <span class="mx-3 text-button" v-for="(link, idx) of links" :key="idx" @click="$router.push(link.path)">{{link.text}}</span>
+
+    </v-app-bar>
+
+    <v-main>
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
   name: "App",
-  components: {
-    HelloWorld,
-  },
+
+  data: () => ({
+    links: [
+      {text: "Home", path: "/"},
+      {text: "O Mnie", path: "/about"},
+      {text: "Kontakt", path: "/contact"}
+    ]
+  }),
 };
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  color: #c88b79;
+}
+#name{
+  margin-top: 50px;
 }
 </style>
